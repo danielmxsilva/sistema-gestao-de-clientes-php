@@ -1,3 +1,4 @@
+<?php include('config.php')?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -10,22 +11,22 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/icone.png" rel="icon">
-  <link href="assets/img/icone.png" rel="apple-touch-icon">
+  <link href="<?php echo INCLUDE_PATH?>assets/img/icone.png" rel="icon">
+  <link href="<?php echo INCLUDE_PATH?>assets/img/icone.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="<?PHP echo INCLUDE_PATH?>assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="<?PHP echo INCLUDE_PATH?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?PHP echo INCLUDE_PATH?>assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="<?PHP echo INCLUDE_PATH?>assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="<?PHP echo INCLUDE_PATH?>assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="<?PHP echo INCLUDE_PATH?>assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="<?PHP echo INCLUDE_PATH?>assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: iPortfolio - v3.5.0
@@ -45,33 +46,46 @@
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Alex Smith</a></h1>
+        <img src="<?PHP ECHO INCLUDE_PATH?>assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="index.html">Daniel Mateus</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
           <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
           <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
       </div>
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-          <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+          <li><a href="<?php echo INCLUDE_PATH?>#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="<?php echo INCLUDE_PATH?>#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Sobre</span></a></li>
+          <li><a href="<?php echo INCLUDE_PATH?>#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Currículo</span></a></li>
+          <li><a href="<?php echo INCLUDE_PATH?>#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+          <li><a href="<?php echo INCLUDE_PATH?>#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Serviços</span></a></li>
+          <li><a href="<?php echo INCLUDE_PATH?>#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contato</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
   </header><!-- End Header -->
 
-  <main id="main">
+
+    <?php
+
+    $url = isset($_GET['url']) ? $_GET['url'] : 'home';
+
+    if(file_exists('pages/'.$url.'.php')){
+      include('pages/'.$url.'.php');
+    }else{
+      include('pages/home.php');
+    }
+
+    ?>
+  
 
     <!-- ======= Breadcrumbs ======= -->
+    <!--
+    <main id="main">
+   
     <section class="breadcrumbs">
       <div class="container">
 
@@ -84,8 +98,8 @@
         </div>
 
       </div>
-    </section><!-- End Breadcrumbs -->
-
+    </section> End Breadcrumbs -->
+    <!--
     <section class="inner-page">
       <div class="container">
         <p>
@@ -94,20 +108,16 @@
       </div>
     </section>
 
-  </main><!-- End #main -->
+  </main> End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>iPortfolio</span></strong>
+        &copy; Copyright <strong><span>Damix Code</span></strong>
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Desenvolvido com a Tecnologia <a href="https://getbootstrap.com/">Bootstrap</a>
       </div>
     </div>
   </footer><!-- End  Footer -->
