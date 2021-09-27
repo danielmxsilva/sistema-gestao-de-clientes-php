@@ -49,9 +49,9 @@
         <img src="<?PHP ECHO INCLUDE_PATH?>assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="index.html">Daniel Mateus</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=100012421770839" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="https://www.instagram.com/daniel_mateus_x/" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/daniel-mateus-74b272211/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
       </div>
 
@@ -125,18 +125,20 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="<?php echo INCLUDE_PATH?>assets/vendor/aos/aos.js"></script>
+  <script src="<?php echo INCLUDE_PATH?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo INCLUDE_PATH?>assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="<?php echo INCLUDE_PATH?>assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="<?php echo INCLUDE_PATH?>assets/vendor/php-email-form/validate.js"></script>
+  <script src="<?php echo INCLUDE_PATH?>assets/vendor/purecounter/purecounter.js"></script>
+  <script src="<?php echo INCLUDE_PATH?>assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="<?php echo INCLUDE_PATH?>assets/vendor/typed.js/typed.min.js"></script>
+  <script src="<?php echo INCLUDE_PATH?>assets/vendor/waypoints/noframework.waypoints.js"></script>
 
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCDIxxm6r_Lygi8XG1oCs_ZWyD4G2fPpSM"></script>
+    <script src="<?php echo INCLUDE_PATH;?>assets/js/scripts.js"></script>
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="<?php echo INCLUDE_PATH?>assets/js/main.js"></script>
 
 </body>
 
