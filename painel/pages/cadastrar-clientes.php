@@ -72,7 +72,7 @@
 	?>
 
 	<div class="form-editar">
-		<form method="POST" enctype="multipart/form-data">
+		<form class="ajax" action="<?php echo INCLUDE_PATH_PAINEL?>ajax/forms.php" method="POST" enctype="multipart/form-data">
 			<div class="form-group">
 				<span>Nome:</span>
 				<input type="text" name="user" value="" required>
@@ -83,15 +83,22 @@
 			</div><!--from-group-->
 			<div class="form-group">
 				<span>Tipo:</span>
-				<select name="tipo" required>
-					<option value="">Físico</option>
-					<option value="">Juridico</option>
+				<select name="tipo_cliente" required>
+					<option value="fisico">Físico</option>
+					<option value="juridico">Juridico</option>
 				</select>
 			</div><!--form-group-->
-				<div class="form-group">
-				<span>CPF/CNPJ:</span>
-				<input type="text" name="cpf-cnpj" value="">
+
+			<div ref="cpf" class="cpf-input form-group">
+				<span>CPF:</span>
+				<input type="text" name="cpf" value="">
 			</div><!--from-group-->
+
+			<div style="display:none;" ref="cnpj" class="cnpj-input form-group">
+				<span>CNPJ:</span>
+				<input type="text" name="cnpj" value="">
+			</div><!--from-group-->
+
 			<div class="form-group">
 				<span>Imagen:</span>
 				<input type="hidden" name="imagem_default" value=" ">
@@ -100,7 +107,7 @@
 			</div><!--from-group-->
 			<div class="form-group">
 				
-				<input <?php permissaoInput(1,'acao_adicionar','Adicionar')?>>
+				<input <?php permissaoInput(1,'acao_adicionar','Cadastrar')?>>
 			
 			</div><!--from-group-->
 		</form>

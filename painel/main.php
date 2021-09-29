@@ -128,6 +128,7 @@
 	<script src="<?php echo INCLUDE_PATH_PAINEL?>js/fade-menu.js"></script>
 	<script src="<?php echo INCLUDE_PATH?>js/jquery.mask.js"></script>
 	<script src="<?php echo INCLUDE_PATH_PAINEL?>js/jquery.ajaxform.js"></script>
+	<script src="<?php echo INCLUDE_PATH_PAINEL?>js/helperMask.js"></script>
 	<script src="<?php echo INCLUDE_PATH_PAINEL?>js/ajax.js"></script>
 	<script>
 		$(function(){
