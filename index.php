@@ -1,145 +1,151 @@
-<?php include('config.php')?>
+<?php include('config.php');?>
+<?php Site::updateUsuarioOnline();?>
+<?php Site::contador();?>
+<?php
+	$infoSite = Mysql::conectar()->prepare("SELECT * FROM `tb_site.config`");
+	$infoSite->execute();
+	$infoSite = $infoSite->fetch();
+
+?>
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Portifólio Daniel Mateus</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="<?php echo INCLUDE_PATH?>assets/img/icone.png" rel="icon">
-  <link href="<?php echo INCLUDE_PATH?>assets/img/icone.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="<?PHP echo INCLUDE_PATH?>assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="<?PHP echo INCLUDE_PATH?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?PHP echo INCLUDE_PATH?>assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?PHP echo INCLUDE_PATH?>assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="<?PHP echo INCLUDE_PATH?>assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="<?PHP echo INCLUDE_PATH?>assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="<?PHP echo INCLUDE_PATH?>assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: iPortfolio - v3.5.0
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+	<meta charset="utf-8">
+	<title><?php echo $infoSite['titulo']?></title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="<?php echo INCLUDE_PATH?>css/style.css">
+	<link rel="shortcut icon" type="icon/png" href="<?php echo INCLUDE_PATH?>img/icone.png">
+	<!-- Facebook Pixel Code -->
+	<script>
+	  !function(f,b,e,v,n,t,s)
+	  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	  n.queue=[];t=b.createElement(e);t.async=!0;
+	  t.src=v;s=b.getElementsByTagName(e)[0];
+	  s.parentNode.insertBefore(t,s)}(window, document,'script',
+	  'https://connect.facebook.net/en_US/fbevents.js');
+	  fbq('init', '{your-pixel-id-goes-here}');
+	  fbq('track', 'PageView');
+	</script>
+	<noscript>
+	  <img height="1" width="1" style="display:none" 
+	       src="https://www.facebook.com/tr?id={your-pixel-id-goes-here}&ev=PageView&noscript=1"/>
+	</noscript>
+	<!-- End Facebook Pixel Code -->
 </head>
-
 <body>
 
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+	<?php
 
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="<?PHP ECHO INCLUDE_PATH?>assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Daniel Mateus</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="https://www.facebook.com/profile.php?id=100012421770839" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="https://www.instagram.com/daniel_mateus_x/" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/daniel-mateus-74b272211/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
-      </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="<?php echo INCLUDE_PATH?>#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="<?php echo INCLUDE_PATH?>#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Sobre</span></a></li>
-          <li><a href="<?php echo INCLUDE_PATH?>#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Currículo</span></a></li>
-          <li><a href="<?php echo INCLUDE_PATH?>#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-          <li><a href="<?php echo INCLUDE_PATH?>#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Serviços</span></a></li>
-          <li><a href="<?php echo INCLUDE_PATH?>#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contato</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
+		$url = isset($_GET['url']) ? $_GET['url'] : 'home';
+		switch($url){
+			case 'depoimentos':
+				echo '<target target="depoimentos" />';
+				break;
+			case 'servicos':
+				echo '<target target="servicos" />';
+				break;
+		}
 
 
-    <?php
+	?>
 
-    $url = isset($_GET['url']) ? $_GET['url'] : 'home';
+	<header class="header-index">
+		<div class="container">
+			<a href="<?php echo INCLUDE_PATH;?>home" attr="logo"></a>
+			<nav class="desktop">
+				<ul>
+					<li><a href="<?php echo INCLUDE_PATH;?>home">HOME</a></li>
+					<li><a href="<?php echo INCLUDE_PATH;?>depoimentos">DEPOIMENTOS</a></li>
+					<li><a href="<?php echo INCLUDE_PATH;?>servicos">SERVIÇOS</a></li>
+					<li><a href="<?php echo INCLUDE_PATH;?>noticias">BLOG</a></li>
+					<li><a realtime="contato" href="<?php echo INCLUDE_PATH;?>contato">CONTATO</a></li>
+				</ul>
+			</nav>
+			<nav class="mobile">
+				<div class="icone-menu"></div>
+				<ul>
+					<li><a href="<?php echo INCLUDE_PATH;?>home">HOME</a></li>
+					<li><a href="<?php echo INCLUDE_PATH;?>depoimentos">DEPOIMENTOS</a></li>
+					<li><a href="<?php echo INCLUDE_PATH;?>servicos">SERVIÇOS</a></li>
+					<li><a href="<?php echo INCLUDE_PATH;?>noticias">BLOG</a></li>
+					<li><a realtime="contato" href="<?php echo INCLUDE_PATH;?>contato">CONTATO</a></li>
+				</ul>
+			</nav>
+		</div><!--container-->
+	</header>
 
-    if(file_exists('pages/'.$url.'.php')){
-      include('pages/'.$url.'.php');
-    }else{
-      include('pages/home.php');
-    }
+<div class="container-principal">
 
-    ?>
-  
+	<?php
 
-    <!-- ======= Breadcrumbs ======= -->
-    <!--
-    <main id="main">
-   
-    <section class="breadcrumbs">
-      <div class="container">
+		//$url = isset($_GET['url']) ? $_GET['url'] : 'home';
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Inner Page</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Inner Page</li>
-          </ol>
-        </div>
+		if(file_exists('pages/'.$url.'.php')){
+			include('pages/'.$url.'.php');
+		}else{
+			if($url != 'depoimentos' && $url != 'servicos'){
+				$urlPar = explode('/',$url)[0];
+				if($urlPar != 'noticias'){
+					$pageof = true;
+					include('pages/pageoff.php');
+				}else{
+					include('pages/noticias.php');
+				}
+			}else{
+				include('pages/home.php');
+			}
+			
+		}
 
-      </div>
-    </section> End Breadcrumbs -->
-    <!--
-    <section class="inner-page">
-      <div class="container">
-        <p>
-          Example inner page template
-        </p>
-      </div>
-    </section>
+	?>
+	
 
-  </main> End #main -->
+</div><!--container-principal-->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Damix Code</span></strong>
-      </div>
-      <div class="credits">
-        Desenvolvido com a Tecnologia <a href="https://getbootstrap.com/">Bootstrap</a>
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
+<footer <?php if(isset($pageof) && $pageof == true) echo 'class="fixed"';?>>
+	<div class="container">
+		<p>Todos os direitos reservados</p>
+	</div><!--container-->
+</footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+	<script src="<?php echo INCLUDE_PATH?>js/jquery.js"></script>
+	<script src="<?php echo INCLUDE_PATH?>js/menu.js"></script>
+	<script src="<?php echo INCLUDE_PATH;?>js/home.js"></script>
+	<script src="<?php echo INCLUDE_PATH;?>js/slide.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCDIxxm6r_Lygi8XG1oCs_ZWyD4G2fPpSM"></script>
+	<script src="<?php echo INCLUDE_PATH;?>js/scripts.js"></script>
+	<?php
+		if($url == 'home' || $url == ''){
+	?>
+	<script src="<?php echo INCLUDE_PATH;?>js/form-home.js"></script>
+	<?php
+		}
+	?>
+	<?php
+		if(is_array($url) && strstr($url[0],'noticias') !== false){
+	?>
+	<script>
+		$(function(){
+			var url = 'http://localhost/site_dinamico_aula/';
+			$('select').change(function(){
+				location.href=url+"noticias/"+$(this).val();
+			})
+		})
+	</script>
+	<?php } ?>
 
-  <!-- Vendor JS Files -->
-  <script src="<?php echo INCLUDE_PATH?>assets/vendor/aos/aos.js"></script>
-  <script src="<?php echo INCLUDE_PATH?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<?php echo INCLUDE_PATH?>assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="<?php echo INCLUDE_PATH?>assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="<?php echo INCLUDE_PATH?>assets/vendor/php-email-form/validate.js"></script>
-  <script src="<?php echo INCLUDE_PATH?>assets/vendor/purecounter/purecounter.js"></script>
-  <script src="<?php echo INCLUDE_PATH?>assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="<?php echo INCLUDE_PATH?>assets/vendor/typed.js/typed.min.js"></script>
-  <script src="<?php echo INCLUDE_PATH?>assets/vendor/waypoints/noframework.waypoints.js"></script>
-
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCDIxxm6r_Lygi8XG1oCs_ZWyD4G2fPpSM"></script>
-    <script src="<?php echo INCLUDE_PATH;?>assets/js/scripts.js"></script>
-  <!-- Template Main JS File -->
-  <script src="<?php echo INCLUDE_PATH?>assets/js/main.js"></script>
+	<?php
+		if($url == 'contato'){
+	?>
+	<script src="<?php echo INCLUDE_PATH;?>js/jquery.mask.js"></script>
+	<script src="<?php echo INCLUDE_PATH;?>js/form.js"></script>
+	<?php
+		}
+	?>
 
 </body>
-
 </html>
