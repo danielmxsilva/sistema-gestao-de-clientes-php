@@ -107,6 +107,10 @@
 			<a href="<?php echo INCLUDE_PATH_PAINEL?>gerenciar-categorias">Gerenciar Categoria</a>
 			<a href="<?php echo INCLUDE_PATH_PAINEL?>gerenciar-noticias">Gerenciar Notícias</a>
 		</div>
+		<div class="gestao-aside">
+			<h2 class="gestao-adm">Gestão de Clientes</h2>
+			<a href="<?php echo INCLUDE_PATH_PAINEL?>cadastrar-clientes">Cadastrar Clientes</a>
+		</div>
 	</aside>
 
 	<div class="wraper-content">
@@ -123,6 +127,8 @@
 	<script src="<?php echo INCLUDE_PATH?>js/jquery.js"></script>
 	<script src="<?php echo INCLUDE_PATH_PAINEL?>js/fade-menu.js"></script>
 	<script src="<?php echo INCLUDE_PATH?>js/jquery.mask.js"></script>
+	<script src="<?php echo INCLUDE_PATH_PAINEL?>js/jquery.ajaxform.js"></script>
+	<script src="<?php echo INCLUDE_PATH_PAINEL?>js/ajax.js"></script>
 	<script>
 		$(function(){
 			$('input[name=data]').mask('99/99/9999');

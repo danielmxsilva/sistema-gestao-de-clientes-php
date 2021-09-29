@@ -13,7 +13,7 @@
 
 	define('BASE_DIR_PAINEL',__DIR__.'/painel');
 	define('NOME_EMPRESA','DAMIX.CODE');
-	define('INCLUDE_PATH','http://localhost/site_dinamico_aula/');
+	define('INCLUDE_PATH','http://localhost/git/');
 	define('INCLUDE_PATH_PAINEL',INCLUDE_PATH.'painel/');
 	define('HOST','localhost');
 	define('USER','root');
