@@ -75,15 +75,15 @@
 		<form class="ajax" action="<?php echo INCLUDE_PATH_PAINEL?>ajax/forms.php" method="POST" enctype="multipart/form-data">
 			<div class="form-group">
 				<span>Nome:</span>
-				<input type="text" name="user" value="" required>
+				<input type="text" name="nome" value="" >
 			</div><!--from-group-->
 			<div class="form-group">
 				<span>E-mail:</span>
-				<input type="text" name="nome" value="" required>
+				<input type="text" name="email" value="" >
 			</div><!--from-group-->
 			<div class="form-group">
 				<span>Tipo:</span>
-				<select name="tipo_cliente" required>
+				<select name="tipo_cliente" >
 					<option value="fisico">Físico</option>
 					<option value="juridico">Juridico</option>
 				</select>
