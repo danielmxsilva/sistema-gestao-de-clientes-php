@@ -26,6 +26,16 @@
 		$cnpj = $_POST['cnpj'];
 	}
 
+	if($nome == ''){
+		$data['sucesso'] = false;
+		$data['mensagem'] = "Erro: O Nome é obrigatório";
+	}
+
+	if($email == ''){
+		$data['sucesso'] = false;
+		$data['mensagem'] = "Erro: O e-mail é obrigatório";
+	}
+
 	if(isset($_FILES['imagem_adicionar'])){
 		if(Painel::imagemValida($_FILES['imagem_adicionar'])){
 			$imagem = $_FILES['imagem_adicionar'];
