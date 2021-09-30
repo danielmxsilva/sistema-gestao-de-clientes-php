@@ -11,8 +11,9 @@ $(function(){
 			$('.box-alert').remove();
 			if(data.sucesso){
 				$('.ajax').prepend('<div class="box-alert sucesso-box">O cliente foi inserido com sucesso!</div>');
+				$('.ajax')[0].reset();
 			}else{
-				$('.ajax').prepend('<div class="box-alert erro-box">Ocorreram os seguintes erros: <b> '+data.erros+'</div>');
+				$('.ajax').prepend('<div class="box-alert erro-box"><b>'+data.mensagem+'</div>');
 			}
 			console.log(data);
 		}
