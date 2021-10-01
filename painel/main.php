@@ -110,6 +110,7 @@
 		<div class="gestao-aside">
 			<h2 class="gestao-adm">Gestão de Clientes</h2>
 			<a href="<?php echo INCLUDE_PATH_PAINEL?>cadastrar-clientes">Cadastrar Clientes</a>
+			<a href="<?php echo INCLUDE_PATH_PAINEL?>gerenciar-clientes">Gerenciar Clientes</a>
 		</div>
 	</aside>
 
