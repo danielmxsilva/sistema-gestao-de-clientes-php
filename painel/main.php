@@ -152,7 +152,11 @@
 		      height: 400,
 		   });
     </script>
-    <?php Painel::loadJs(array('clientes.js'),'gerenciar-clientes');?>
+    <!--
+    	função de inserção dinamica de script na página, via url
+    <?php //Painel::loadJs(array('clientes.js'),'gerenciar-clientes');?>
+
+  	-->	
 
 </body>
 </html>

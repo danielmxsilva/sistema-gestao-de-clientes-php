@@ -10,12 +10,28 @@ $(function(){
 			$('.ajax').find('input[type=submit]').removeAttr('disabled');
 			$('.box-alert').remove();
 			if(data.sucesso){
-				$('.ajax').prepend('<div class="box-alert sucesso-box">O cliente foi inserido com sucesso!</div>');
-				$('.ajax')[0].reset();
+				$('.ajax').prepend('<div class="box-alert sucesso-box">'+data.mensagem+'</div>');
+				if($('.ajax').hasAttr('atualizar') == false)
+					$('.ajax')[0].reset();
 			}else{
 				$('.ajax').prepend('<div class="box-alert erro-box"><b>'+data.mensagem+'</div>');
 			}
 			console.log(data);
 		}
 	})
+
+	$('.btn-delete').click(function(e){
+		e.preventDefault();
+		var item_id = $(this).attr('item_id');
+		var el = $(this).parent().parent().parent();
+		$.ajax({
+			url:include_path+'/ajax/forms.php',
+			data:{id:item_id,tipo_acao:'deletar_cliente'},
+			method:'post'
+		}).done(function(){
+			el.fadeOut();
+		})
+
+	})
+	
 }) 
