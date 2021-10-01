@@ -15,6 +15,9 @@
 	<script src="https://cdn.tiny.cloud/1/4rtcsu1dd5h9dkf6r4vb5vb9df9ke21mllpfl0wbir3dufjl/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
+
+	<base base="<?php echo INCLUDE_PATH_PAINEL;?>"/>
+
 	<header>
 			<div class="icone-menu"></div>
 			<div class="nome-painel-procurar">
@@ -131,6 +134,7 @@
 	<script src="<?php echo INCLUDE_PATH_PAINEL?>js/jquery.ajaxform.js"></script>
 	<script src="<?php echo INCLUDE_PATH_PAINEL?>js/helperMask.js"></script>
 	<script src="<?php echo INCLUDE_PATH_PAINEL?>js/ajax.js"></script>
+	<script src="<?php echo INCLUDE_PATH_PAINEL?>js/constants.js"></script>
 	<script>
 		$(function(){
 			$('input[name=data]').mask('99/99/9999');
@@ -148,6 +152,7 @@
 		      height: 400,
 		   });
     </script>
+    <?php Painel::loadJs(array('clientes.js'),'gerenciar-clientes');?>
 
 </body>
 </html>

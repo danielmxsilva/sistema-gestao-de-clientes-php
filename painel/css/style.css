@@ -844,6 +844,7 @@ a.pag-selected{
 }
 
 .box-single{
+	min-height: 250px;
 	border: 1px solid #ccc;
 	padding: 10px 0;
 }
@@ -855,6 +856,7 @@ a.pag-selected{
 }
 
 .box-topo img{
+	height: 60px;
 	border-radius: 50%;
 	border: 2px solid #ccc;
 	width: 60px;

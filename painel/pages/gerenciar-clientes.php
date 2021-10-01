@@ -26,7 +26,10 @@
 	<div class="box-wraper">
 
 		<?php
-		for($i = 0; $i < 5; $i++){
+		$clientes = Mysql::conectar()->prepare("SELECT * FROM `tb_admin.clientes`");
+		$clientes->execute();
+		$clientes = $clientes->fetchAll();
+		foreach($clientes as $value){
 		?>
 
 		<div class="box-single-wraper">
@@ -34,14 +37,25 @@
 			<div class="box-single">
 
 				<div class="box-topo">
-					<img src="<?php echo INCLUDE_PATH_PAINEL?>img/icone-user.png">
+					<?php
+					if($value['foto'] == ''){
+					?>
+						<img src="<?php echo INCLUDE_PATH_PAINEL?>img/icone-user.png">
+					<?php }else{ ?>
+						<img src="<?php echo INCLUDE_PATH_PAINEL?>uploads/<?php echo $value['foto']?>">
+					<?php }?>
 				</div><!--box-topo-->
 
 				<div class="box-corpo">
-					<p><b>Nome:</b> Daniel</p>
-					<p><b>E-mail:</b> danielmxsilva@gmail.com</p>
-					<p><b>Tipo:</b> fisico</p>
-					<p><b>CPF:</b> 481.655.568.43</p>
+					<p><b>Nome:</b> <?php echo $value['nome']?></p>
+					<p><b>E-mail:</b> <?php echo $value['email']?></p>
+					<p><b>Tipo:</b> <?php echo ucfirst($value['tipo'])?></p>
+					<p><b><?php
+							  if($value['tipo'] == 'fisico')
+								  echo 'CPF: ';
+							  else
+								  echo 'CNPJ: ';
+							?></b> <?php echo $value['cpf_cnpj'];?></p>
 				</div><!--box-corpo-->
 
 				<div class="box-btn">
@@ -52,7 +66,7 @@
 					<a <?php
 							if($_SESSION['cargo'] >= 1){
 						  ?>
-						  actionBtn="delete" href=""
+						   class="btn-delete" item_id="<?php echo $value['id']?>" href=""
 						  <?php }else{ ?> 
 						  	actionBtn="negado" href="#"
 						  <?php } ?>
