@@ -23,14 +23,30 @@
 	<img src="<?php echo INCLUDE_PATH_PAINEL;?>img/listar.png">
 	<h2>Clientes Cadastrados</h2>
 
+	<div class="busca">
+		<h2>Realizar uma busca</h2>
+		<form method="post">
+			<input type="text" name="busca" placeholder="Procure por: nome, email, cpf ou cnpj">
+			<input type="submit" name="acao" value="Buscar">
+		</form>
+	</div><!--busca-->
+
 	<div class="box-wraper">
 
-		<?php
-		$clientes = Mysql::conectar()->prepare("SELECT * FROM `tb_admin.clientes`");
+	<?php
+		$query = "";
+		if(isset($_POST['acao'])){
+			$busca = $_POST['busca'];
+			$query = "WHERE nome LIKE '%$busca%' OR email LIKE '%$busca%' OR cpf_cnpj LIKE '%$busca%'";
+		}
+		$clientes = Mysql::conectar()->prepare("SELECT * FROM `tb_admin.clientes` $query");
 		$clientes->execute();
 		$clientes = $clientes->fetchAll();
+		if(isset($_POST['acao'])){
+			echo '<div class="cliente-result">Foram encontrados <b>'.count($clientes).'</b> resultado(s)</div>';
+		}
 		foreach($clientes as $value){
-		?>
+	?>
 
 		<div class="box-single-wraper">
 

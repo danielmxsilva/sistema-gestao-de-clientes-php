@@ -904,6 +904,34 @@ a.pag-selected{
 
 /***FINAL ADM-PAINEL***/
 
+
+.busca input[type=submit]{
+	padding-left: 0;
+	width: 80px;
+	background-color: #00AAAC;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+	border-color: #00AAAC;
+}
+
+.busca input[name=busca]{
+	outline: none;
+	border: 1px solid #ccc;
+	padding: 2px;
+	width: 250px;
+}
+
+.cliente-result{
+	border-top: 3px solid #ccc;
+	color: #646464;
+}
+
+.cliente-result p{
+	font-size: 14px;
+}
+
+
 @media screen and (max-width: 800px){
 	header{
 		height: 120px;
@@ -1056,6 +1084,18 @@ a.pag-selected{
 	}
 	.form-group input,select,textarea{
 		height: 45px;
+	}
+	.busca input[type=submit]{
+		font-size: 20px;
+		margin-top: 5px;
+		height: 45px;
+		width: 100%;
+		background-color: #00AAAC;
+	}
+
+	.busca input[name=busca]{
+		height: 45px;
+		width: 100%;
 	}
 }
 @media screen and (max-width: 385px){
